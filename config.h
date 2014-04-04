@@ -1,10 +1,10 @@
 // xoat config.
 
 #define BORDER 2
-#define BORDER_BLUR "Dark Gray"
-#define BORDER_FOCUS "Royal Blue"
+#define BORDER_BLUR "Navy"
+#define BORDER_FOCUS "Dodger Blue"
 #define BORDER_URGENT "Red"
-#define GAP 2
+#define GAP 4
 
 // Title bar xft font.
 // Setting this to NULL will disable title bars
@@ -12,8 +12,8 @@
 #define TITLE "sans:size=8"
 
 // Title bar style
-#define TITLE_BLUR "Black"
-#define TITLE_FOCUS "White"
+#define TITLE_BLUR "cyan4"
+#define TITLE_FOCUS "dark red"
 #define TITLE_ELLIPSIS 32
 
 // There are three static tiles called SPOT1, SPOT2, and SPOT3.
@@ -46,8 +46,8 @@
 
 layout layouts[] = {
 	// Look at xrandr output to determine your monitor order.
-	{ .spot_start = SMART, .spot1_align = LEFT,  .spot1_width_pct = 66, .spot2_height_pct = 66 }, // primary monitor
-	{ .spot_start = SMART, .spot1_align = RIGHT, .spot1_width_pct = 60, .spot2_height_pct = 66 }, // secondary monitor, etc...
+	{ .spot_start = SMART, .spot1_align = LEFT, .spot1_width_pct = 55, .spot2_height_pct = 66 }, // primary monitor
+	{ .spot_start = SMART, .spot1_align = LEFT, .spot1_width_pct = 55, .spot2_height_pct = 66 }, // secondary monitor, etc...
 };
 
 // Available actions...
@@ -75,16 +75,16 @@ binding keys[] = {
 	{ .mod = Mod4Mask, .key = XK_Down,  .act = action_focus_direction, .num = DOWN  },
 
 	// Move the current window to another spot by direction.
-	{ .mod = ShiftMask|Mod4Mask, .key = XK_Left,  .act = action_move_direction, .num = LEFT  },
-	{ .mod = ShiftMask|Mod4Mask, .key = XK_Up,    .act = action_move_direction, .num = UP    },
-	{ .mod = ShiftMask|Mod4Mask, .key = XK_Right, .act = action_move_direction, .num = RIGHT },
-	{ .mod = ShiftMask|Mod4Mask, .key = XK_Down,  .act = action_move_direction, .num = DOWN  },
+	{ .mod = ShiftMask|Mod4Mask, .key = XK_b,  .act = action_move_direction, .num = LEFT  },
+	{ .mod = ShiftMask|Mod4Mask, .key = XK_p,    .act = action_move_direction, .num = UP    },
+	{ .mod = ShiftMask|Mod4Mask, .key = XK_f, .act = action_move_direction, .num = RIGHT },
+	{ .mod = ShiftMask|Mod4Mask, .key = XK_n,  .act = action_move_direction, .num = DOWN  },
 
 	// Flip between the top two windows in the current spot.
-	{ .mod = Mod4Mask, .key = XK_Tab, .act = action_raise_nth, .num = 1 },
+	{ .mod = Mod4Mask, .key = XK_grave, .act = action_raise_nth, .num = 1 },
 
 	// Cycle through all windows in the current spot.
-	{ .mod = Mod4Mask, .key = XK_grave,  .act = action_cycle },
+	{ .mod = Mod4Mask, .key = XK_Tab,  .act = action_cycle },
 
 	// Raise nth window in the current spot.
 	{ .mod = Mod4Mask, .key = XK_1, .act = action_raise_nth, .num = 1 },
@@ -103,7 +103,7 @@ binding keys[] = {
 	// Toggle current window full screen.
 	{ .mod = Mod4Mask, .key = XK_f, .act = action_fullscreen },
 	{ .mod = Mod4Mask, .key = XK_v, .act = action_maximize_vert },
-	{ .mod = Mod4Mask, .key = XK_h, .act = action_maximize_horz },
+	{ .mod = Mod4Mask, .key = XK_c, .act = action_maximize_horz },
 	{ .mod = Mod4Mask, .key = XK_m, .act = action_maximize },
 
 	// Switch focus between monitors.
@@ -116,16 +116,14 @@ binding keys[] = {
 
 	// Launcher
 	{ .mod = Mod4Mask, .key = XK_x,  .act = action_command, .data = "dmenu_run" },
-	{ .mod = Mod4Mask, .key = XK_F1, .act = action_command, .data = "konsole"   },
-	{ .mod = Mod4Mask, .key = XK_F2, .act = action_command, .data = "chromium"  },
-	{ .mod = Mod4Mask, .key = XK_F3, .act = action_command, .data = "pcmanfm"   },
+	//{ .mod = Mod4Mask, .key = XK_F1, .act = action_command, .data = "konsole"   },
 
 	// Find or start apps by WM_CLASS (lower case match).
 	// Only works for apps that use some form of their binary name as their class...
-	{ .mod = AnyModifier, .key = XK_F1, .act = action_find_or_start, .data = "konsole"  },
-	{ .mod = AnyModifier, .key = XK_F2, .act = action_find_or_start, .data = "chromium" },
-	{ .mod = AnyModifier, .key = XK_F3, .act = action_find_or_start, .data = "pcmanfm"  },
-	{ .mod = AnyModifier, .key = XK_F4, .act = action_find_or_start, .data = "sublime-text" },
+  { .mod = Mod1Mask|Mod4Mask, .key = XK_t, .act = action_find_or_start, .data = "terminology"  },
+  { .mod = Mod1Mask|Mod4Mask, .key = XK_e, .act = action_find_or_start, .data = "emacs"  },
+  { .mod = Mod1Mask|Mod4Mask, .key = XK_c, .act = action_find_or_start, .data = "claws-mail"  },
+  { .mod = Mod1Mask|Mod4Mask, .key = XK_p, .act = action_find_or_start, .data = "pcmanfm"  },
 
-	{ .mod = AnyModifier, .key = XK_Print, .act = action_command, .data = "xowl"  },
+	//{ .mod = AnyModifier, .key = XK_Print, .act = action_command, .data = "xowl"  },
 };
